@@ -29,7 +29,6 @@ ext {
     compileSdkVersion = 33
     buildToolsVersion = '33.0.2'
 
-    versionCode = 20202
-    versionName = "2.2.2"
-
+    versionCode = 20203
+    versionName = "2.2.3"
 }
