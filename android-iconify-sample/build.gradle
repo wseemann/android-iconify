@@ -1,10 +1,5 @@
-buildscript {
-    dependencies {
-        classpath rootProject.ext.androidPlugin
-    }
-}
-
 apply plugin: 'com.android.application'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -40,6 +35,24 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    publishing {
+        singleVariant("release")
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.joanzapata.iconify'
+                artifactId = 'android-iconify-sample'
+                version = rootProject.ext.versionName
+            }
+        }
+    }
 }
 
 dependencies {
@@ -59,5 +72,3 @@ dependencies {
     implementation project(':android-iconify-weathericons')
     implementation project(':android-iconify-simplelineicons')
 }
-
-// apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

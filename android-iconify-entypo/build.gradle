@@ -1,10 +1,5 @@
-buildscript {
-    dependencies {
-        classpath rootProject.ext.androidPlugin
-    }
-}
-
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -18,10 +13,26 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
+    publishing {
+        singleVariant("release")
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.joanzapata.iconify'
+                artifactId = 'android-iconify-entypo'
+                version = rootProject.ext.versionName
+            }
+        }
+    }
 }
 
 dependencies {
     implementation project(':android-iconify')
 }
-
-// apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

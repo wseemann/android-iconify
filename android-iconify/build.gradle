@@ -1,10 +1,5 @@
-buildscript {
-    dependencies {
-        classpath rootProject.ext.androidPlugin
-    }
-}
-
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -21,8 +16,20 @@ android {
     }
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.joanzapata.iconify'
+                artifactId = 'android-iconify'
+                version = rootProject.ext.versionName
+            }
+        }
+    }
+}
+
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
-
-// apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
