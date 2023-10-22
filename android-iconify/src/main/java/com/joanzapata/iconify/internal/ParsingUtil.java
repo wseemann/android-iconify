@@ -5,11 +5,12 @@ import java.util.List;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.support.v4.view.ViewCompat;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.util.TypedValue;
 import android.widget.TextView;
+
+import androidx.core.view.ViewCompat;
 
 import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.internal.HasOnViewAttachListener.OnViewAttachListener;

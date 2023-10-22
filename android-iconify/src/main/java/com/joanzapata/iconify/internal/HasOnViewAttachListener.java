@@ -1,7 +1,8 @@
 package com.joanzapata.iconify.internal;
 
-import android.support.v4.view.ViewCompat;
 import android.widget.TextView;
+
+import androidx.core.view.ViewCompat;
 
 /**
  * Any TextView subclass that wishes to call {@link com.joanzapata.iconify.Iconify#addIcons(TextView...)} on it
